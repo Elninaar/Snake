@@ -1,0 +1,291 @@
+MPASM  5.31                        COMPILER.H   10-4-2019  11:54:08         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Error[108]  : Illegal character (/)
+                      00001 /*********************************************************************
+Error[108]  : Illegal character (*)
+                      00002  *
+Error[108]  : Illegal character (*)
+                      00003  *                  Compiler and hardware specific definitions
+Error[108]  : Illegal character (*)
+                      00004  *
+Error[108]  : Illegal character (*)
+                      00005  *********************************************************************
+Error[108]  : Illegal character (*)
+                      00006  * FileName:        Compiler.h
+Error[108]  : Illegal character (*)
+                      00007  * Dependencies:    None
+Error[108]  : Illegal character (*)
+                      00008  * Processor:       PIC18, PIC24F, PIC24H, dsPIC30F, dsPIC33F, PIC32
+Error[108]  : Illegal character (*)
+                      00009  * Compiler:        Microchip C32 v1.00 or higher
+Error[108]  : Illegal character (*)
+                      00010  *                                      Microchip C30 v3.01 or higher
+Error[108]  : Illegal character (*)
+                      00011  *                                      Microchip C18 v3.13 or higher
+Error[108]  : Illegal character (*)
+                      00012  *                                      HI-TECH PICC-18 STD 9.50PL3 or higher
+Error[108]  : Illegal character (*)
+                      00013  * Company:         Microchip Technology, Inc.
+Error[108]  : Illegal character (*)
+                      00014  *
+Error[108]  : Illegal character (*)
+                      00015  * Software License Agreement
+Error[108]  : Illegal character (*)
+                      00016  *
+Error[108]  : Illegal character (*)
+                      00017  * Copyright (C) 2002-2008 Microchip Technology Inc.  All rights 
+Error[108]  : Illegal character (*)
+                      00018  * reserved.
+Error[108]  : Illegal character (*)
+                      00019  *
+Error[108]  : Illegal character (*)
+                      00020  * Microchip licenses to you the right to use, modify, copy, and 
+Error[108]  : Illegal character (*)
+                      00021  * distribute: 
+Error[108]  : Illegal character (*)
+                      00022  * (i)  the Software when embedded on a Microchip microcontroller or 
+Error[108]  : Illegal character (*)
+                      00023  *      digital signal controller product ("Device") which is 
+Error[108]  : Illegal character (*)
+                      00024  *      integrated into Licensee's product; or
+Error[108]  : Illegal character (*)
+                      00025  * (ii) ONLY the Software driver source files ENC28J60.c and 
+Error[108]  : Illegal character (*)
+                      00026  *      ENC28J60.h ported to a non-Microchip device used in 
+Error[108]  : Illegal character (*)
+MPASM  5.31                        COMPILER.H   10-4-2019  11:54:08         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00027  *      conjunction with a Microchip ethernet controller for the 
+Error[108]  : Illegal character (*)
+                      00028  *      sole purpose of interfacing with the ethernet controller. 
+Error[108]  : Illegal character (*)
+                      00029  *
+Error[108]  : Illegal character (*)
+                      00030  * You should refer to the license agreement accompanying this 
+Error[108]  : Illegal character (*)
+                      00031  * Software for additional information regarding your rights and 
+Error[108]  : Illegal character (*)
+                      00032  * obligations.
+Error[108]  : Illegal character (*)
+                      00033  *
+Error[108]  : Illegal character (*)
+                      00034  * THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT 
+Error[108]  : Illegal character (*)
+                      00035  * WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT 
+Error[108]  : Illegal character (*)
+                      00036  * LIMITATION, ANY WARRANTY OF MERCHANTABILITY, FITNESS FOR A 
+Error[108]  : Illegal character (*)
+                      00037  * PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL 
+Error[108]  : Illegal character (*)
+                      00038  * MICROCHIP BE LIABLE FOR ANY INCIDENTAL, SPECIAL, INDIRECT OR 
+Error[108]  : Illegal character (*)
+                      00039  * CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF 
+Error[108]  : Illegal character (*)
+                      00040  * PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR SERVICES, ANY CLAIMS 
+Error[108]  : Illegal character (*)
+                      00041  * BY THIRD PARTIES (INCLUDING BUT NOT LIMITED TO ANY DEFENSE 
+Error[108]  : Illegal character (*)
+                      00042  * THEREOF), ANY CLAIMS FOR INDEMNITY OR CONTRIBUTION, OR OTHER 
+Error[108]  : Illegal character (*)
+                      00043  * SIMILAR COSTS, WHETHER ASSERTED ON THE BASIS OF CONTRACT, TORT 
+Error[108]  : Illegal character (*)
+                      00044  * (INCLUDING NEGLIGENCE), BREACH OF WARRANTY, OR OTHERWISE.
+Error[108]  : Illegal character (*)
+                      00045  *
+Error[108]  : Illegal character (*)
+                      00046  *
+Error[108]  : Illegal character (*)
+                      00047  * Author               Date            Comment
+Error[108]  : Illegal character (*)
+                      00048  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Error[108]  : Illegal character (*)
+                      00049  * Howard Schlunder             10/03/2006      Original, copied from old Compiler.h
+Error[108]  : Illegal character (*)
+                      00050  * Howard Schlunder             11/07/2007      Reorganized and simplified
+Error[108]  : Illegal character (*)
+                      00051  ********************************************************************/
+                      00052 #ifndef __COMPILER_H
+                      00053 #define __COMPILER_H
+                      00054 
+Error[108]  : Illegal character (/)
+MPASM  5.31                        COMPILER.H   10-4-2019  11:54:08         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00055 // Include proper device header file
+Error[113]  : Symbol not previously defined (defined)
+Error[113]  : Symbol not previously defined (__18CXX)
+Error[112]  : Missing operator
+                      00056 #if defined(__18CXX) || defined(HI_TECH_C)      
+                      00057         // All PIC18 processors
+                      00058         #if defined(HI_TECH_C)  // HI TECH PICC-18 compiler
+                      00059                 #define __18CXX
+                      00060                 #include <htc.h>
+                      00061         #else                                   // Microchip C18 compiler
+                      00062             #include <p18cxxx.h>
+                      00063         #endif
+                      00064 #elif defined(__PIC24F__)       // Microchip C30 compiler
+                      00065         // PIC24F processor
+                      00066         #include <p24Fxxxx.h>
+                      00067 #elif defined(__PIC24H__)       // Microchip C30 compiler
+                      00068         // PIC24H processor
+                      00069         #include <p24Hxxxx.h>
+                      00070 #elif defined(__dsPIC33F__)     // Microchip C30 compiler
+                      00071         // dsPIC33F processor
+                      00072         #include <p33Fxxxx.h>
+                      00073 #elif defined(__dsPIC30F__)     // Microchip C30 compiler
+                      00074         // dsPIC30F processor
+                      00075         #include <p30fxxxx.h>
+                      00076 #elif defined(__PIC32MX__)      // Microchip C32 compiler
+                      00077         #if !defined(__C32__)
+                      00078                 #define __C32__
+                      00079         #endif
+                      00080         #include <p32xxxx.h>
+                      00081         #include <plib.h>
+                      00082 #else
+Warning[207]: Found label after column 1. (#error)
+Error[122]  : Illegal opcode (Unknown)
+                      00083         #error Unknown processor or compiler.  See Compiler.h
+                      00084 #endif
+                      00085 
+Error[105]  : Cannot open file (Include File "stdio.h" not found)
+                      00086 #include <stdio.h>
+Error[105]  : Cannot open file (Include File "stdlib.h" not found)
+                      00087 #include <stdlib.h>
+Error[105]  : Cannot open file (Include File "string.h" not found)
+                      00088 #include <string.h>
+                      00089 
+                      00090 
+Error[108]  : Illegal character (/)
+                      00091 // Base RAM and ROM pointer types for given architecture
+Error[113]  : Symbol not previously defined (defined)
+Error[113]  : Symbol not previously defined (__C32__)
+Error[112]  : Missing operator
+                      00092 #if defined(__C32__)
+                      00093         #define PTR_BASE                DWORD
+                      00094         #define ROM_PTR_BASE    DWORD
+                      00095 #elif defined(__C30__)
+MPASM  5.31                        COMPILER.H   10-4-2019  11:54:08         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00096         #define PTR_BASE                WORD
+                      00097         #define ROM_PTR_BASE    WORD
+                      00098 #elif defined(__18CXX)
+                      00099         #define PTR_BASE                WORD
+                      00100         #define ROM_PTR_BASE    unsigned short long
+                      00101 #endif
+                      00102 
+                      00103 
+Error[108]  : Illegal character (/)
+                      00104 // Definitions that apply to all compilers, except C18
+Error[113]  : Symbol not previously defined (defined)
+Error[113]  : Symbol not previously defined (__18CXX)
+Error[112]  : Missing operator
+                      00105 #if !defined(__18CXX) || defined(HI_TECH_C)
+                      00106         #define memcmppgm2ram(a,b,c)    memcmp(a,b,c)
+                      00107         #define strcmppgm2ram(a,b)              strcmp(a,b)
+                      00108         #define memcpypgm2ram(a,b,c)    memcpy(a,b,c)
+                      00109         #define strcpypgm2ram(a,b)              strcpy(a,b)
+                      00110         #define strncpypgm2ram(a,b,c)   strncpy(a,b,c)
+                      00111         #define strstrrampgm(a,b)               strstr(a,b)
+                      00112         #define strlenpgm(a)                    strlen(a)
+                      00113         #define strchrpgm(a,b)                  strchr(a,b)
+                      00114         #define strcatpgm2ram(a,b)              strcat(a,b)
+                      00115 #endif
+                      00116 
+                      00117 
+Error[108]  : Illegal character (/)
+                      00118 // Definitions that apply to all 8-bit products
+Error[108]  : Illegal character (/)
+                      00119 // (PIC18)
+Error[113]  : Symbol not previously defined (defined)
+Error[113]  : Symbol not previously defined (__18CXX)
+Error[112]  : Missing operator
+                      00120 #if defined(__18CXX)
+                      00121         #define __attribute__(a)
+                      00122 
+                      00123     #define FAR                         far
+                      00124 
+                      00125         // Microchip C18 specific defines
+                      00126         #if !defined(HI_TECH_C)
+                      00127             #define ROM                         rom
+                      00128                 #define strcpypgm2ram(a, b)             strcpypgm2ram(a,(far rom char*)b)
+                      00129         #endif
+                      00130         
+                      00131         // HI TECH PICC-18 STD specific defines
+                      00132         #if defined(HI_TECH_C)
+                      00133             #define ROM                         const
+                      00134                 #define rom
+                      00135             #define Nop()                       asm("NOP");
+                      00136                 #define ClrWdt()                                asm("CLRWDT");
+                      00137             #define Reset()                                     asm("RESET");
+                      00138         #endif
+                      00139     
+MPASM  5.31                        COMPILER.H   10-4-2019  11:54:08         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00140 // Definitions that apply to all 16-bit and 32-bit products
+                      00141 // (PIC24F, PIC24H, dsPIC30F, dsPIC33F, and PIC32)
+                      00142 #else
+                      00143         #define ROM                                             const
+                      00144 
+Error[108]  : Illegal character (/)
+                      00145         // 16-bit specific defines (PIC24F, PIC24H, dsPIC30F, dsPIC33F)
+Error[113]  : Symbol not previously defined (defined)
+Error[113]  : Symbol not previously defined (__C30__)
+Error[112]  : Missing operator
+                      00146         #if defined(__C30__)
+                      00147                 #define Reset()                         asm("reset")
+                      00148         #define FAR                 __attribute__((far))
+                      00149         #endif
+                      00150 
+Error[108]  : Illegal character (/)
+                      00151         // 32-bit specific defines (PIC32)
+Error[113]  : Symbol not previously defined (defined)
+Error[113]  : Symbol not previously defined (__C32__)
+Error[112]  : Missing operator
+                      00152         #if defined(__C32__)
+                      00153                 #define persistent
+                      00154                 #define far
+                      00155         #define FAR
+                      00156                 #define Reset()                         SoftReset()
+                      00157                 #define ClrWdt()                        (WDTCONSET = _WDTCON_WDTCLR_MASK)
+                      00158                 #define Nop()                           asm("nop")
+                      00159         #endif
+                      00160 #endif
+                      00161 
+                      00162 
+                      00163 
+                      00164 #endif
+Error[129]  : Expected (END)
+MPASM  5.31                        COMPILER.H   10-4-2019  11:54:08         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ROM                               const
+__18F46J50                        00000001
+__COMPILER_H                      
+
+Errors   :    81
+Warnings :     1 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+
